@@ -53,7 +53,11 @@ extension GMSPathGeometryUtilsTest {
       CLLocationCoordinate2D(latitude: 0, longitude: 0.1),
       CLLocationCoordinate2D(latitude: 0.1, longitude: 0.1)
     ].gmsMutablePath
-    XCTAssertEqual((pow(0.1.radians, 2) / 2), path1.signedArea(radius: 1), accuracy: accuracy)
+      
+    let degreesInRadians = 0.1 * Double.pi / 180.0
+    XCTAssertEqual((pow(degreesInRadians, 2) / 2), path1.signedArea(radius: 1), accuracy: accuracy)
+      
+    //XCTAssertEqual((pow(0.1.radians, 2) / 2), path1.signedArea(radius: 1), accuracy: accuracy)
 
     let path2 = [right, up, front].gmsMutablePath
     XCTAssertEqual(.pi / 2, path2.signedArea(radius: 1), accuracy: accuracy)
